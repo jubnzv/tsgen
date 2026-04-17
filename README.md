@@ -6,6 +6,8 @@ syntactically-structured programs in that language.
 
 It is useful for setting up fuzzing or differential-testing campaigns and building fuzzing corpora.
 
+The tool only follows the tree-sitter grammar, so output often has syntax or semantic errors the target compiler rejects — useful for fuzzing, not for compilable code.
+
 ## What it does
 
 Given a tree-sitter grammar, `tsgen`:
