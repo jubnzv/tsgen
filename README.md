@@ -4,15 +4,14 @@ A grammar-based program generator driven by tree-sitter grammars. Point it at
 a `grammar.json` from any tree-sitter parser and it produces a corpus of
 syntactically-structured programs in that language.
 
-Handy for setting up fuzzing or differential-testing campaigns and building fuzzing corpora.
+It is useful for setting up fuzzing or differential-testing campaigns and building fuzzing corpora.
 
 ## What it does
 
 Given a tree-sitter grammar, `tsgen`:
 
 1. Walks the grammar rules recursively from the root.
-2. At each `CHOICE` node, picks one alternative (uniform, or biased toward
-   deeper alternatives — see *complexity bias* below).
+2. At each `CHOICE` node, picks one alternative
 3. At each `REPEAT`/`REPEAT1`, picks a random count up to `--max-repeat`.
 4. At each `PATTERN` (a terminal regex), samples from a pre-built dictionary
    of candidates — or, if you give it one, from your own identifier dict
@@ -42,7 +41,7 @@ cargo run --release -- \
 
 ## Concrete example: Cairo
 
-The tool was used to seed the corpora to bootstrap the [Cairo](https://github.com/starkware-libs/cairo/) compiler fuzzing campaign.
+As a concrete example, let's consider how to seed the corpora to bootstrap the [Cairo](https://github.com/starkware-libs/cairo/) compiler fuzzing campaign.
 
 ### 1. Build the Cairo tree-sitter grammar
 
