@@ -23,6 +23,15 @@ jobs:
       - name: Cache cargo registry & build
         uses: Swatinem/rust-cache@v2
 
+      - name: Install tree-sitter CLI
+        run: cargo install tree-sitter-cli --locked
+
+      - name: Regenerate testdata
+        run: |
+          cd testdata/test-lang
+          tree-sitter generate
+          cc -O2 -fPIC -shared -I src src/parser.c -o parser.so
+
       - name: cargo build
         run: cargo build --all-targets --verbose
 
