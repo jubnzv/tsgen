@@ -1,0 +1,10 @@
+/target
+debug/
+**/*.rs.bk
+*.pdb
+tags
+testdata/*/src/
+testdata/*/parser.so
+testdata/*/node_modules/
+testdata/*/build/
+testdata/*/bindings/
